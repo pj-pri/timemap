@@ -1,21 +1,16 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useId, ReactNode } from "react";
 import ReactDOMClient from "react-dom/client";
 import Markdown from "react-markdown";
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "hello-world": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-    }
-  }
-}
-
 const markdown = "# Hi, *Pluto*!";
 
-function CDocView() {
+type CDocViewProps = {
+  type?: string;
+  doc?: string;
+};
+
+function CDocView({ doc, type }: CDocViewProps) {
+  const id = useId();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,22 +24,16 @@ function CDocView() {
 
     const div = document.createElement("div");
     const root = ReactDOMClient.createRoot(div);
-    const random = Math.floor(Math.random() * 3);
+    // const random = Math.floor(Math.random() * 3);
 
-    root.render(
-      <Markdown className="markdown">{random ? file3 : file2}</Markdown>
-    );
+    root.render(<Markdown className="markdown">{doc || file3}</Markdown>);
     console.log("div : ", div);
     ref!.current!.shadowRoot!.innerHTML = "";
     ref!.current!.shadowRoot!.appendChild(div);
   }, []);
 
   return (
-    <div
-      id="dddd"
-      ref={ref}
-      className="w-full h-full overflow-y-auto bg-slate-100"
-    ></div>
+    <div id={id} ref={ref} className="w-full h-full overflow-y-auto"></div>
   );
 }
 
