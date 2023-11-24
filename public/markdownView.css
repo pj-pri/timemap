@@ -1,0 +1,35 @@
+.markdown h1 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1;
+  margin-bottom: 20px;
+}
+
+.markdown h2 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1;
+  margin-bottom: 16px;
+}
+
+.markdown h3 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1;
+  margin-bottom: 8px;
+}
+
+.markdown h4 {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1;
+  margin-bottom: 4px;
+}
+
+.markdown ul li {
+  list-style: disc;
+}
+
+.markdown ol li {
+  list-style: decimal;
+}
